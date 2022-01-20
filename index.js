@@ -22,6 +22,7 @@ async function run() {
         await client.connect();
         const database = client.db("meddical");
         const doctorsCollection = database.collection("doctors");
+        const servicesCollection = database.collection("services");
 
         // This is server home path
         app.get('/', (req, res) => {
@@ -32,6 +33,12 @@ async function run() {
         app.get("/doctors", async (req, res) => {
             const doctors = await doctorsCollection.find({}).toArray();
             res.send(doctors)
+        })
+
+        // Get all doctors from the database
+        app.get("/services", async (req, res) => {
+            const services = await servicesCollection.find({}).toArray();
+            res.send(services)
         })
     } finally {
         // await client.close();
