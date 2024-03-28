@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 const { MongoClient } = require('mongodb');
 
 
-app.use(cors());
+app.use(cors()); 
 app.use(express.json());
 
 // Declare MongoDB database URI and Client
